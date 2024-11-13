@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from baseboomer.com/balls by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Nov 2024 21:48:06 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <link rel="icon" href="images/basebooerlogo-new.ico" type="image/x-icon">
+    <!-- add jquery -->
+    <script src="../code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../code.jquery.com/ui/1.13.1/jquery-ui.min.js"></script>
+
+
+
+    <link rel="stylesheet" type="text/css" href="css/main.css"> 
+    <!-- <link rel="stylesheet" type="text/css" href="css/leaderboard.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com/">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&amp;display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boomer on Base</title>
+    <meta name="description" content="The leading project onboarding Boomers to Crypto. Boomer on Base has helped thousands of people learn about crypto through our telegram. We're the fastest growing Base projected with a fully Doxxed team and an incredible community takeover story.">
+    <meta name="keywords" content="Boomer on Base, an educational meme community bettering the entire ecosystem">
+    <meta name="author" content="Boomer on Base">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://baseboomer.com/">
+    <meta property="og:title" content="Boomer on Base">
+    <meta property="og:description" content="Curing generation depression with Capital Gains">
+    <meta property="og:image" content="https://baseboomer.com/images/socialback.jpg">
+    <meta name="twitter:card" content="https://baseboomer.com/images/socialback.jpg">
+    <meta name="twitter:url" content="https://baseboomer.com/">
+    <meta name="twitter:title" content="Boomer on Base">
+    <meta name="twitter:description" content="Join the movement to empower boomers with blockchain technology and meme culture.">
+    <meta name="twitter:image" content="https://baseboomer.com/images/socialback.jpg">
+    <link rel="canonical" href="index.html">
+    <style>
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: white;
+            color: #333;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+
+        .back-button:hover {
+            background-color: #f0f0f0;
+        }
+
+        .back-arrow {
+            margin-right: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-button">
+        <span class="back-arrow">&#8592;</span> Back
+    </a>
+
+    <!-- Remove the existing nav content -->
+
+    <!-- ... rest of the body content ... -->
+
+<style>
+    /* General Styles */
+    .section.blue.leaderboard-wrapper {
+        padding-top: calc(5vh + 25px);
+        padding-bottom: 5vh;
+        margin-top: -25px;
+        bottom: 0;
+    }
+
+    .leaderboard-header,
+    .leaderboard-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Align items vertically */
+    }
+
+    .leaderboard-header-item,
+    .leaderboard-item {
+        text-align: center;
+        padding: 8px 0; /* Consistent padding */
+        /* No global flex property */
+    }
+
+    /* Specific Flex Settings for Each Column (Desktop) */
+    .leaderboard-header-item.rank,
+    .leaderboard-item.rank {
+        flex: 0.1; /* Original desktop setting */
+        min-width: 50px; /* Adjusted minimum width */
+    }
+
+    .leaderboard-header-item.address,
+    .leaderboard-item.address {
+        flex: 2.5; /* Original desktop setting */
+        min-width: 200px; /* Ensure sufficient width */
+        max-width: 465px; /* Ensure sufficient width */
+        text-align: left; /* Align address text to the left for better readability */
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        padding-left: 10px; /* Add left padding for consistency */
+        padding-right: 10px; /* Add right padding for consistency */
+    }
+
+    .leaderboard-header-item.days,
+    .leaderboard-item.days {
+        flex: 1; /* Original desktop setting */
+        min-width: 80px; /* Adjusted minimum width */
+    }
+
+    .leaderboard-header-item.amount,
+    .leaderboard-item.amount {
+        flex: .1; /* Original desktop setting */
+        min-width: 80px; /* Adjusted minimum width */
+    }
+
+    /* Optional: Adjust font sizes for better fit (Desktop) */
+    .leaderboard-header-item,
+    .leaderboard-item {
+        font-size: 0.9em;
+    }
+
+    /* Hover Effect for Leaderboard Entries */
+    .leaderboard-entry:hover {
+        background-color: #f9f9f9;
+        cursor: pointer;
+    }
+
+    /* Responsive Adjustments for Mobile Devices */
+    @media (max-width: 700px) {
+        .leaderboard-header-item.address,
+        .leaderboard-item.address {
+            flex: 3; /* Allocate more space to Address */
+            min-width: 120px; /* Adjust minimum width for mobile */
+            text-align: left; /* Improve readability */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            padding-left: 5px; /* Reduce left padding for mobile */
+            padding-right: 5px; /* Reduce right padding for mobile */
+        }
+        .address-header {
+            text-align: left; /* Align with the address items */
+        }
+
+        .leaderboard-header-item.rank,
+        .leaderboard-item.rank,
+        .leaderboard-header-item.days,
+        .leaderboard-item.days,
+        .leaderboard-header-item.amount,
+        .leaderboard-item.amount {
+            flex: 0.8; /* Reduce space for Rank, Days, and Amount */
+            min-width: 60px; /* Adjust minimum width */
+        }
+        
+        /* Optional: Adjust font sizes for better fit */
+        .leaderboard-header-item,
+        .leaderboard-item {
+            font-size: 0.9em;
+        }
+    }
+
+    .leaderboard-header {
+        padding: 10px 20px;
+        background: #023CBA;
+        color: #ffffff;
+        font-weight: bold;
+        border-radius: 8px 8px 0 0;
+    }
+
+    .leaderboard-item.rank {
+        font-weight: bold;
+        color: #023CBA;
+    }
+
+    .leaderboard-entry {
+        padding: 10px 20px;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+    }
+
+    .leaderboard-entry:last-child {
+        border-bottom: none;
+    }
+
+    .download-wallet-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 20px;
+        background-color: white;
+        color: #0452FF;
+        border: none;
+        border-radius: 20px;
+        font-size: 16px;
+        cursor: pointer;
+        text-decoration: none;
+        gap: 10px;
+        max-width: 250px;
+    }
+
+    .download-wallet-button img.cb-logo {
+        width: 8px;
+        height: auto;
+    }
+    img.cb-logo {
+        width: 24px;
+        height: auto;
+    }
+
+    #addressInput,
+    #submitAddress {
+        width: 300px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #023CBA;
+        border-radius: 4px;
+        font-size: 1em;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    #addressInput {
+        color: #023CBA;
+        background-color: #ffffffd8;
+    }
+
+    #submitAddress {
+        color: #ffffff;
+        background-color: #023CBA;
+        cursor: pointer;
+    }
+
+    /* Leaderboard Styles */
+    .leaderboard {
+        margin: 20px auto;
+        padding: 0; /* Remove padding from leaderboard container */
+        background: #ffffffce;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        max-width: 830px;
+        overflow-x: auto;
+    }
+
+    .leaderboard-header,
+    .leaderboard-entry {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px; /* Move padding here for consistent width */
+    }
+
+    /* Holder List Styles */
+    ul.divided-sections {
+        margin: auto;
+        height: 60px;
+        width: 820px;
+        list-style: none;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .holder-li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+        padding: 0 5px;
+        font-size: 0.8em;
+    }
+
+    #burnt-supply {
+        background: #B82812; /* Light red */
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+
+    #diamond-supply {
+        background: #D1F2F7; /* Light white */
+    }
+
+    #active-supply {
+        background: #7DBB43; /* Light green */
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+
+    #inactive-supply {
+        background: #000000; /* Black */
+    }
+
+    .holder-li:nth-child(n+4) {
+        box-shadow: inset 0px 0px 10px 1px rgba(117, 182, 255, 0.4),
+                    0px 0px 20px rgba(117, 182, 255, 0.1);
+    }
+
+    .holder-li:nth-child(2) {
+        animation: pulse 1s alternate infinite;
+    }
+
+    /* Keyframes */
+    @keyframes pulse {
+        0% {
+            background: #D1F2F7;
+            box-shadow: inset 0px 0px 10px 2px #44707a,
+                        0px 0px 40px 2px #355e65;
+        }
+        100% {
+            background: #d1f2f7bd;
+            box-shadow: inset 0px 0px 10px 2px #44707a,
+                        0px 0px 30px 2px #355e65;
+        }
+    }
+
+    /* Typography */
+    h3 {
+        text-align: center;
+        margin: 20px 0;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    p {
+        margin: 0 0 1em 0;
+        color: #ffffff;
+    }
+
+    /* Inline Giveaway */
+    .inline-giveaway {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .inline-giveaway p {
+        margin: 0;
+    }
+
+    /* Totals Section */
+    .totals-section {
+        margin: 20px 0;
+    }
+
+    #boomer-usd-total {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    /* Video Modal */
+    .modal {
+        /* Modal styles here */
+    }
+
+    .modal-content {
+        /* Modal content styles here */
+    }
+
+    .close {
+        /* Close button styles here */
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 820px) {
+        ul.divided-sections {
+            width: 100%;
+            height: auto;
+            flex-direction: column;
+        }
+
+        .holder-li {
+            width: 100% !important;
+            margin-bottom: 10px;
+        }
+
+        /* Enhanced Leaderboard Header Styling */
+        .leaderboard-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #023CBA;
+            color: #ffffff;
+            padding: 15px 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .leaderboard-header-item {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.1em;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .leaderboard-header-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Optional: Add Icons or Visual Indicators */
+        .leaderboard-header-item.rank::before {
+            content: "🔢 ";
+        }
+
+        .leaderboard-header-item.address::before {
+            content: "📍 ";
+        }
+
+        .leaderboard-header-item.days::before {
+            content: "📅 ";
+        }
+
+        .leaderboard-header-item.amount::before {
+            content: "💰 ";
+        }
+    }
+
+    @media (max-width: 700px) {
+
+
+        .leaderboard {
+            margin: 0 auto;
+            padding: 0;
+            font-size: 0.76em;
+        }
+
+        .leaderboard-header,
+        .leaderboard-entry {
+            padding: 8px 10px; /* Consistent padding for header and entries */
+        }
+
+        .leaderboard-header-item,
+        .leaderboard-item.address,
+        .leaderboard-item {
+            min-width: 70px !important; /* Kept for specific override */
+            padding: 4px 0 !important; /* Kept for specific override */
+        }
+
+        .leaderboard-entry {
+            padding: 5px 10px;
+        }
+
+        .leaderboard-header {
+            padding: 12px 8px;
+            font-size: 1em;
+        }
+
+        .leaderboard-header-item {
+            padding: 8px 0;
+            font-size: 1em;
+        }
+
+        /* Optional: Use smaller or different icons for tiny screens */
+        .leaderboard-header-item.rank::before,
+        .leaderboard-header-item.address::before,
+        .leaderboard-header-item.days::before,
+        .leaderboard-header-item.amount::before {
+            /* Potentially reduce icon size or switch to abbreviations */
+        }
+        .address-header {
+            text-align: center!important;
+        }
+    }
+
+
+    .leaderboard-wrapper::before {
+        content: "";
+        display: block;
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background: 
+        linear-gradient(rgba(0, 9, 31, 0.5), rgba(0, 0, 0, 0.6)),
+        url('images/dballs.jpg') no-repeat top center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .section-inner {
+        position: relative;
+        z-index: 2;
+        padding: 20px;
+        min-height: 100vh;
+    }
+
+    /* Mobile-specific adjustments */
+    @media (max-width: 700px) {
+        .leaderboard-wrapper::before {
+            background: 
+                linear-gradient(rgba(0, 9, 31, 0.5), rgba(0, 0, 0, 0.6)),
+                url('images/dballsmobile.jpg') top right;
+            background-size: cover;
+        }
+    }
+
+</style>
+<div class="section leaderboard-wrapper">
+    <div class="section-inner">
+        <div class="header-container">
+            <div class="inline-giveaway" style="padding-top: 40px;">
+                <h3>Welcome Loyal Diamond Ballers</h3>
+            </div>
+            <br>
+            <p>Enter diamond Ball status by submitting your address below</p>
+            <br>
+            <input type="text" id="addressInput" placeholder="Enter your address" />
+            <button id="submitAddress">Submit</button>
+            <br>
+            <h3>Requirements</h3>
+            <p>You must hold 50k Boomer</p>
+            <p>No outbound transactions in 14 days</p>
+            <div class="totals-section">
+                <br>
+                <h3>Big Baller Totals</h3>
+                <p>Total Diamond Balled: <span id="totalBalled">0</span></p>
+                <p>Total Ballers: <span id="totalBallers">0</span></p>
+                <p>Held Savagely: <span id="percentBalled">0</span></p>
+                <br>
+                <p>HODLing = holding for 60+ days and has not submitted their wallet for Diamond Ball status</p>
+                <br>
+            </div>
+            <div class="section-container">
+                <ul class="divided-sections">
+                    <li class="holder-li" id="burnt-supply">Burnt</li>
+                    <li class="holder-li" id="diamond-supply">Diamond Balled</li>
+                    <li class="holder-li" id="inactive-supply">HODLing</li>
+                    <li class="holder-li" id="active-supply">Active</li>
+                </ul>
+            </div>
+            <div class="leaderboard">
+                <div class="leaderboard-header">
+                    <div class="leaderboard-header-item rank">Rank</div>
+                    <div class="leaderboard-header-item address address-header">Address</div>
+                    <div class="leaderboard-header-item days">Days</div>
+                    <div class="leaderboard-header-item amount">Amount</div>
+                </div>
+
+                <div id="leaderboard-entries">
+                    <!-- Example Entry -->
+                    <div class="leaderboard-entry">
+                        <div class="rank">1</div>
+                        <div class="address">0xABC...123</div>
+                        <div class="days">30</div>
+                        <div class="amount">5000</div>
+                    </div>
+                    <!-- More entries... -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="videoModal" class="modal">
+    <span class="close">✖</span>
+    <div class="modal-content">
+        <iframe id="videoIframe" src="#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+</div>
+<footer>
+    <div class="inner">
+        <div class="logo-wrapper">
+            <img width="280px" src="images/white-logo.svg" alt="image of boomer logo in white" width="300px">
+        </div>
+        <div class="social-wrapper">
+            <a target="_blank" aria-label="Boomer on base social media link for twitter" href="https://twitter.com/BoomerOnBase"><div class="icon twitterx"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for telegram"  href="https://t.me/baseboomerportal"><div class="icon telegram"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for youtube" href="https://www.youtube.com/@baseboomer"><div class="icon youtube"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for tiktok" href="https://www.tiktok.com/@boomeronbase"><div class="icon tiktok"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for instagram" href="https://www.instagram.com/boomeronbase/"><div class="icon instagram"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for warpcast" href="https://warpcast.com/boomeronbase"><div class="icon warpcast"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for shopify" href="https://merch.baseboomer.com/"><div class="icon shopify"></div></a>
+            <a target="_blank" aria-label="Boomer on base social media link for Dextools" href="https://www.dextools.io/app/en/base/pair-explorer/0xa926342d7f9324a1dbde8f5ab77c92706f289b5d?t=1721945736041"><div class="icon dextools"></div></a>
+        </div>
+        <p>Disclaimer: The content on this site is for informational and educational purposes only and should not be construed as professional financial advice. This is a memecoin project with no value advertised or utility.</p>
+    </div>
+</footer>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="js/scripts.js"></script>
+<script src="js/balls.js"></script>
+<script>
+    function updateSupplyWidths() {
+        var totalWidth = 820;
+        fetch('/holder_balances?cache=0').then(response => response.json()).then(data => {
+            console.log(data);
+            var totalSupply = 1000000000;
+            var burntSupply = data.find(balance => balance.section === 'burnt').amount;
+            var diamondSupply = data.find(balance => balance.section === 'balled').amount;
+            var activeSupply = data.find(balance => balance.section === 'active').amount;
+            var inactiveSupply = data.find(balance => balance.section === 'inactive').amount;
+            var circulatingSupply = data.find(balance => balance.section === 'pool').amount;
+
+            if (burntSupply + diamondSupply + activeSupply + inactiveSupply + circulatingSupply !== totalSupply) {
+                inactiveSupply = totalSupply - (burntSupply + diamondSupply + activeSupply + circulatingSupply);
+            }
+            $('#percentBalled').text((((burntSupply + diamondSupply + inactiveSupply) / totalSupply) * 100).toFixed(1) + '%');
+            activeSupply = activeSupply + circulatingSupply;
+            burntSupply = (burntSupply / totalSupply * 100).toFixed(1);
+            diamondSupply = (diamondSupply / totalSupply * 100).toFixed(1);
+            activeSupply = (activeSupply / totalSupply * 100).toFixed(1);
+            inactiveSupply = (inactiveSupply / totalSupply * 100).toFixed(1);
+
+            document.getElementById('burnt-supply').style.width = (totalWidth * (burntSupply / 100)) + 'px';
+            document.getElementById('diamond-supply').style.width = (totalWidth * (diamondSupply / 100)) + 'px';
+            document.getElementById('active-supply').style.width = (totalWidth * (activeSupply / 100)) + 'px';
+            document.getElementById('inactive-supply').style.width = (totalWidth * (inactiveSupply / 100)) + 'px';
+
+            document.getElementById('burnt-supply').innerText = 'Burnt ' + burntSupply + '%';
+            document.getElementById('diamond-supply').innerText = 'Diamond Balled ' + diamondSupply + '%';
+            document.getElementById('active-supply').innerText = 'Active ' + activeSupply + '%';
+            document.getElementById('inactive-supply').innerText = 'HODLing ' + inactiveSupply + '%';
+            
+        });
+    }
+
+    updateSupplyWidths();
+</script>
+</body>
+
+<!-- Mirrored from baseboomer.com/balls by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 11 Nov 2024 21:48:08 GMT -->
+</html>
